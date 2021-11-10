@@ -1,0 +1,29 @@
+
+.main_subscribe_section{
+    background:url('https://i.ibb.co/WcPLM5c/Bg3-90e25fb7-6ee5-42d6-b55b-398e3c403fd8-1920-X.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 9rem 0rem;
+
+}
+
+.subscribe_mini_container input{
+    width: 70%;
+    padding: .9rem 1rem;
+    outline: none;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.subscribe_mini_container button{
+    width: 30%;
+    padding: .9rem .7rem;
+    margin-left:-.8rem ;
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: 500;
+    color: white;
+    background-color: #e52165;
+
+}

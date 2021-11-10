@@ -1,0 +1,10 @@
+.review_card_mini_container{
+    text-align: center;
+    cursor: pointer;
+    background-color: rgb(233, 228, 228);
+}
+.review_card_mini_container:hover{
+    background-color: transparent;
+    color: white;
+    transition: all .3s ease-out;
+}

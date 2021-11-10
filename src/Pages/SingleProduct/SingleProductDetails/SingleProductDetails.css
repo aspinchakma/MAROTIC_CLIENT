@@ -1,0 +1,32 @@
+.breaking_line{
+    height: 1px;
+    background-color: gray;
+    margin-top: .8rem;
+}
+.details_description{
+    font-size:1.1rem;
+}
+.details_product_price{
+    font-weight: 500;
+    color: blue;
+    font-size: 2rem;
+}
+.details_form_container input{
+    width: 100%;
+    padding: .4rem 1rem;
+    margin-bottom: 1rem;
+    outline:none;
+}
+.details_brand_name{
+    color: blueviolet;
+}
+
+.loading_spinner{
+    text-align: center;
+    padding: 10rem 0rem;
+}
+.loading_spinner div{
+    width: 8rem;
+    height: 8rem;
+    font-size: 2rem;
+}

@@ -1,0 +1,27 @@
+.categories_name{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+}
+.categories_name:hover{
+    color: #f3ca20;
+    transition: all .3s ease-out;
+}
+
+.categories_card{
+    cursor: pointer;
+    background-color: transparent;
+    border:none;
+}
+.categories_card:hover{
+    transform: translateY(-10px);
+    transition: all .4s ease-out;
+}
+.main_categories_section{
+    background-color: #0d1137;
+}
+.mini_categories_container img{
+    width: 70%;
+    margin: auto;
+}
