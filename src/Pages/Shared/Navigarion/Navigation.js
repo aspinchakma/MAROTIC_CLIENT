@@ -1,14 +1,37 @@
 import React from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import './Navigation.css';
 
 const Navigation = () => {
     return (
-        <div>
-            <h1>This is navigation section</h1>
-            <NavLink to="/home">Home</NavLink>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/products">Products</NavLink>
-            <NavLink to="/login">login</NavLink>
+        <div className=" navigation_bar">
+            <Navbar collapseOnSelect expand="lg" bg="dark" className="px-5" variant="dark">
+                <Navbar.Brand as={NavLink} to="/">
+                    <img
+                        src="https://i.ibb.co/DDfy6XH/logo-trang.png"
+                        alt=""
+                    />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ms-auto">
+                        <Nav.Link as={NavLink} className="nav_link" to="/home">Home</Nav.Link>
+                        <Nav.Link as={NavLink} className="nav_link" to="/dashboard">Dashboard</Nav.Link>
+                        <Nav.Link as={NavLink} className="nav_link" to="/login">Login</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link eventKey={2} href="#memes">
+                            Dank memes
+                        </Nav.Link>
+                    </Nav>
+                    <Nav>
+                        <Nav.Link>
+                            <button className="logout_button">Log out</button>
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         </div>
     );
 };
