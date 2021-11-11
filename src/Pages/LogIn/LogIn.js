@@ -2,10 +2,17 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
 import './Login.css';
+import useAuth from './../../utilities/hooks/useAuth';
+import { Alert } from '@mui/material';
 
 const LogIn = () => {
+    const { handleLoginWithEmailAndPassword, error } = useAuth();
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        handleLoginWithEmailAndPassword(data.email, data.password);
+        console.log(error)
+    };
+
 
     return (
         <div className="login_main_container">
@@ -30,6 +37,12 @@ const LogIn = () => {
                         <input type="submit" value="Login" />
                     </form>
                     <NavLink to="/register" className="form_shift_link">New User ? Create Account.</NavLink>
+                    {
+                        error.length > 0 && <Alert severity="error">
+
+                            {error}
+                        </Alert>
+                    }
                 </div>
                 <div className="col-lg-4">
 

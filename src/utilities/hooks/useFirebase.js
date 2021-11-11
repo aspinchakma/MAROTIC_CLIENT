@@ -17,11 +17,14 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
+
                 setError('');
 
             })
             .catch(error => {
-                setError(error.message)
+                if (error.message === 'Firebase: Error (auth/wrong-password).') {
+                    setError('wrong-password.');
+                }
             })
     }
 
