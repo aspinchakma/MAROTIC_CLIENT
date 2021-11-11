@@ -5,7 +5,6 @@ import './SingleProduct.css';
 import { Link } from 'react-router-dom';
 
 const SingleProduct = ({ product }) => {
-    console.log(product)
     return (
         <div>
             <Col>

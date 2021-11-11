@@ -6,16 +6,17 @@ import Navigation from '../../Shared/Navigarion/Navigation';
 import './SingleProductDetails.css';
 import { Rating } from '@mui/material';
 import { Spinner } from 'react-bootstrap';
+import useAuth from './../../../utilities/hooks/useAuth';
 
 const SingleProductDetails = () => {
     const { id } = useParams();
+    const { user } = useAuth();
     const [product, setProduct] = useState({});
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id]);
-    console.log(product)
 
     // get data from input field 
     const { register, handleSubmit } = useForm();
@@ -56,12 +57,12 @@ const SingleProductDetails = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
 
 
-                            <input value="Aspin Chakma" {...register("displayName")} />
-                            <input type="email" value="aspinchakma2019@gmail.com" {...register("email")} />
+                            <input value={user.displayName} {...register("displayName")} />
+                            <input type="email" value={user.email} {...register("email")} />
                             <input type="number" {...register("quantity", { min: 1, max: 10 })} defaultValue="1" placeholder="Quantity" />
-                            <input type="tel" {...register("phoneNumber", { required: true })} placeholder="Phone Number" />
+                            <input type="tel" {...register("phoneNumber", { required: true })} placeholder="Phone Number" required />
 
-                            <input type="text" {...register("address", { required: true })} placeholder="Address" />
+                            <input type="text" {...register("address", { required: true })} placeholder="Address" required />
                             <input type="submit" value="Place Order" />
                         </form>
 
