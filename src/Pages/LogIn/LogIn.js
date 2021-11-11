@@ -1,15 +1,18 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import './Login.css';
 import useAuth from './../../utilities/hooks/useAuth';
 import { Alert } from '@mui/material';
 
 const LogIn = () => {
+    const location = useLocation();
+    const history = useHistory();
+
     const { handleLoginWithEmailAndPassword, error } = useAuth();
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        handleLoginWithEmailAndPassword(data.email, data.password);
+        handleLoginWithEmailAndPassword(data.email, data.password, location, history);
         console.log(error)
     };
 

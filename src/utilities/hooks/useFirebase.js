@@ -12,12 +12,14 @@ const useFirebase = () => {
 
 
     // sign in 
-    const handleLoginWithEmailAndPassword = (email, password) => {
+    const handleLoginWithEmailAndPassword = (email, password, location, history) => {
 
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
 
+                const uri = location.state?.from || '/home';
+                history.push(uri)
                 setError('');
 
             })
