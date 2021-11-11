@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigarion/Navigation';
 import './SingleProductDetails.css';
-import { Rating } from '@mui/material';
+import { Rating, Alert } from '@mui/material';
 import { Spinner } from 'react-bootstrap';
 import useAuth from './../../../utilities/hooks/useAuth';
 
@@ -12,6 +12,7 @@ const SingleProductDetails = () => {
     const { id } = useParams();
     const { user } = useAuth();
     const [product, setProduct] = useState({});
+
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
@@ -19,12 +20,27 @@ const SingleProductDetails = () => {
     }, [id]);
 
     // get data from input field 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+
     const onSubmit = data => {
         const { name, price } = product;
         const order = { name, price, ...data };
-        order.status = 'pending'
-        console.log(order)
+        order.status = 'pending';
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Successfully Added');
+                    reset();
+                }
+            })
+
     };
     return (
         <div>
@@ -49,7 +65,7 @@ const SingleProductDetails = () => {
                             <p className="breaking_line"></p>
                             <p className="details_description">{product.description}</p>
                             <h5 className="details_product_price">${product.price}</h5>
-
+                            <Alert severity="warning">Note :Please set product quantity greater then 0.</Alert>
                         </div>
                     </div>
                     <div className="col-lg-4 details_form_container py-5">
