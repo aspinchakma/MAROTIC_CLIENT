@@ -2,9 +2,7 @@ import { Alert } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
-import Footer from '../Shared/Footer/Footer';
 import useAuth from './../../utilities/hooks/useAuth';
-import Navigation from './../Shared/Navigarion/Navigation';
 import { useHistory } from 'react-router-dom'
 import './Register.css';
 
@@ -23,8 +21,7 @@ const Register = () => {
     };
     return (
         <div className="register_form">
-            <Navigation></Navigation>
-            <div className="container row  mx-auto mini_register_container ">
+            <div className="container row  mx-auto mini_register_container_main ">
                 <div className="col-lg-4">
 
                 </div>
@@ -60,7 +57,6 @@ const Register = () => {
 
                 </div>
             </div>
-            <Footer></Footer>
         </div>
     );
 };

@@ -13,9 +13,8 @@ const LogIn = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         handleLoginWithEmailAndPassword(data.email, data.password, location, history);
-        console.log(error)
-    };
 
+    };
 
     return (
         <div className="login_main_container">

@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 const useFirebase = () => {
     initializeAuthentication();
     const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const auth = getAuth();
@@ -13,8 +14,9 @@ const useFirebase = () => {
 
     // sign in 
     const handleLoginWithEmailAndPassword = (email, password, location, history) => {
-
+        setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
+
             .then(result => {
                 setUser(result.user);
 
@@ -28,11 +30,13 @@ const useFirebase = () => {
                     setError('wrong-password.');
                 }
             })
+            .finally(() => setIsLoading(false))
     }
 
     // create user by email and password
 
     const handleCreateAccount = (name, email, password, history) => {
+        setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
 
@@ -52,16 +56,19 @@ const useFirebase = () => {
                     setError('Email already in use.')
                 }
             })
+            .finally(() => setIsLoading(false))
     }
 
     // observer 
     useEffect(() => {
-        onAuthStateChanged(auth, user => {
+        const unsubscribed = onAuthStateChanged(auth, user => {
             if (user) {
                 setUser(user)
             } else {
                 setUser({})
             }
+            setIsLoading(false)
+            return () => unsubscribed;
         })
     }, [auth])
     const insertUser = (newUser) => {
@@ -79,12 +86,14 @@ const useFirebase = () => {
     }
 
     const handleLogOut = () => {
+        setIsLoading(true)
         const auth = getAuth();
         signOut(auth).then(() => {
             setUser({})
         }).catch((error) => {
             setError(error.message)
         })
+            .finally(setIsLoading(false))
     }
 
 
@@ -105,6 +114,7 @@ const useFirebase = () => {
         user,
         error,
         setError,
+        isLoading,
 
 
     }
