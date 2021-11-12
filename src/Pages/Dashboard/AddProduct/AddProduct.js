@@ -6,7 +6,7 @@ import './AddProduct.css';
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/products', {
+        fetch('https://infinite-crag-35075.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

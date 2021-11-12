@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from './../../../utilities/hooks/useAuth';
 import MyOrder from './MyOrder/MyOrder';
+import { Alert } from '@mui/material';
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const { user } = useAuth();
     useEffect(() => {
 
-        fetch(`http://localhost:5000/orders/${user.email}`)
+        fetch(`https://infinite-crag-35075.herokuapp.com/orders/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyOrders(data)
@@ -19,7 +20,7 @@ const MyOrders = () => {
     const handleDelete = id => {
         const confirmMessage = window.confirm("Are You Sure Delete this item ?");
         if (confirmMessage) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://infinite-crag-35075.herokuapp.com/orders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -34,9 +35,9 @@ const MyOrders = () => {
     }
     return (
         <div>
-            <h3>This is My Orders page</h3>
-            <p className="text-center">Your Total orders {myOrders.length}</p>
-            <Table striped bordered hover size="sm">
+            <h3 className="text-center">My Orders</h3>
+            <p className="text-center">Total orders {myOrders.length}</p>
+            {myOrders.length ? <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
                         <th>Product Name</th>
@@ -59,6 +60,9 @@ const MyOrders = () => {
 
 
             </Table>
+                :
+                <Alert className="mt-5" severity="info">Please Order Product</Alert>
+            }
         </div>
     );
 };

@@ -24,6 +24,7 @@ import AddReview from './AddReview/AddReview';
 import Welcome from './Welcome/Welcom';
 import useAuth from './../../utilities/hooks/useAuth';
 import AdminRoute from '../../utilities/AdminRoute/AddminRoute';
+import UserRoute from '../../utilities/UserRoute/UserRoute';
 
 
 
@@ -48,11 +49,11 @@ function Dashboard(props) {
             <Toolbar />
             <div className="mini_admin_panel_container">
                 <Link to="/">Back To Home</Link>
-                <Link to={`${url}/myOrders`}>My Orders</Link>
-                <Link to={`${url}/pay`}>Pay</Link>
+                {!isAdmin && <Link to={`${url}/myOrders`}>My Orders</Link>}
+                {!isAdmin && <Link to={`${url}/pay`}>Pay</Link>}
                 {isAdmin && <Link to={`${url}/manageAll`}>Manage All</Link>}
-                <Link to={`${url}/review`}>Add Review</Link>
-                <Link to={`${url}/addProduct`}>Add Product</Link>
+                {!isAdmin && <Link to={`${url}/review`}>Add Review</Link>}
+                {isAdmin && <Link to={`${url}/addProduct`}>Add Product</Link>}
                 {isAdmin && <Link to={`${url}/makeAdmin`}>Make Admin</Link>}
                 <button onClick={handleLogOut} className="dashboard_log_out_button">Log Out <i className="fas fa-sign-out-alt log_out_icon"></i></button>
             </div>
@@ -131,21 +132,21 @@ function Dashboard(props) {
                     <Route exact path={path}>
                         <Welcome></Welcome>
                     </Route>
-                    <Route path={`${path}/myOrders`}>
+                    <UserRoute path={`${path}/myOrders`}>
                         <MyOrders></MyOrders>
-                    </Route>
-                    <Route path={`${path}/pay`}>
+                    </UserRoute>
+                    <UserRoute path={`${path}/pay`}>
                         <Pay></Pay>
-                    </Route>
+                    </UserRoute>
                     <AdminRoute path={`${path}/manageAll`}>
                         <ManageAll></ManageAll>
                     </AdminRoute>
-                    <Route path={`${path}/review`}>
+                    <UserRoute path={`${path}/review`}>
                         <AddReview></AddReview>
-                    </Route>
-                    <Route path={`${path}/addProduct`}>
+                    </UserRoute>
+                    <AdminRoute path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
-                    </Route>
+                    </AdminRoute>
 
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>

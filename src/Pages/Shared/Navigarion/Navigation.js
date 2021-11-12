@@ -19,7 +19,7 @@ const Navigation = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link as={NavLink} className="nav_link" to="/home">Home</Nav.Link>
-                        <Nav.Link as={NavLink} className="nav_link" to="/dashboard">Dashboard</Nav.Link>
+                        {user.email && <Nav.Link as={NavLink} className="nav_link" to="/dashboard">Dashboard</Nav.Link>}
                         {user.email === undefined && <Nav.Link as={NavLink} className="nav_link" to="/login">Login</Nav.Link>}
                     </Nav>
                     <Nav>

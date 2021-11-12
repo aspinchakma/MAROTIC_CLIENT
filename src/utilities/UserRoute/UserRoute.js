@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import useAuth from './../hooks/useAuth';
 import { Spinner } from 'react-bootstrap';
+import useAuth from './../hooks/useAuth';
 
-const AdminRoute = ({ children, ...rest }) => {
+const UserRoute = ({ children, ...rest }) => {
 
     const { isAdmin, isLoading, user } = useAuth();
     if (isLoading) {
@@ -17,7 +17,7 @@ const AdminRoute = ({ children, ...rest }) => {
         <Route
             {...rest}
             render={({ location }) =>
-                user.email && isAdmin ? (
+                user.email && !isAdmin ? (
                     children
                 ) : (
                     <Redirect
@@ -32,4 +32,4 @@ const AdminRoute = ({ children, ...rest }) => {
     );
 };
 
-export default AdminRoute;
+export default UserRoute;

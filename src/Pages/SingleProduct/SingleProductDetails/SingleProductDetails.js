@@ -15,7 +15,7 @@ const SingleProductDetails = () => {
     const [warning, setWarning] = useState(1);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${id}`)
+        fetch(`https://infinite-crag-35075.herokuapp.com/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id]);
@@ -34,7 +34,7 @@ const SingleProductDetails = () => {
         const { name, price } = product;
         const order = { name, price, ...data };
         order.status = 'pending';
-        fetch('http://localhost:5000/order', {
+        fetch('https://infinite-crag-35075.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

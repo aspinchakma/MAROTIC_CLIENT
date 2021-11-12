@@ -5,7 +5,7 @@ const MakeAdmin = () => {
     const [email, setEmail] = useState('')
     const handleOnSubmit = e => {
 
-        fetch('http://localhost:5000/users/makeAdmin', {
+        fetch('https://infinite-crag-35075.herokuapp.com/users/makeAdmin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

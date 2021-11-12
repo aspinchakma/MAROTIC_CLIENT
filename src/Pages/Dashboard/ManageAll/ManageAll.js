@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import SingleMange from './SingleManage/SingleMange';
 import useAuth from './../../../utilities/hooks/useAuth';
+import { Alert } from '@mui/material';
 
 const ManageAll = () => {
     const [orders, setOrders] = useState([]);
@@ -11,7 +12,7 @@ const ManageAll = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/manageAll`)
+        fetch(`https://infinite-crag-35075.herokuapp.com/manageAll`)
             .then(res => res.json())
             .then(data => {
                 setOrders(data)
@@ -20,7 +21,7 @@ const ManageAll = () => {
     const handleDelete = id => {
         const confirmMessage = window.confirm("Are You Sure Delete this item ?");
         if (confirmMessage) {
-            fetch(`http://localhost:5000/manageAll/${id}`, {
+            fetch(`https://infinite-crag-35075.herokuapp.com/manageAll/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -35,7 +36,7 @@ const ManageAll = () => {
     }
     const handleStatusUpdate = id => {
         console.log(id)
-        fetch(`http://localhost:5000/manageAll/${id}`, {
+        fetch(`https://infinite-crag-35075.herokuapp.com/manageAll/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -53,8 +54,9 @@ const ManageAll = () => {
 
     return (
         <div>
-            <h6>This manage all section</h6>
-            <Table striped bordered hover size="sm">
+            <h5 className="text-center">Manage All Orders</h5>
+            <p className="text-center">You Have Total {orders.length} orders.</p>
+            {orders.length ? <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
                         <th>Email</th>
@@ -81,6 +83,9 @@ const ManageAll = () => {
 
 
             </Table>
+                :
+                <Alert className="mt-5" severity="info">You Have No Any Orders</Alert>
+            }
         </div>
     );
 };

@@ -14,7 +14,7 @@ const Banner = () => {
                             dignissim pellentesque felis.
                         </p>
                         <NavLink to="/products">
-                            <button className="banner_button">SHOP NOW</button>
+                            <button className="banner_button">MORE PRODUCT</button>
                         </NavLink>
                     </div>
                 </div>

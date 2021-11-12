@@ -75,7 +75,7 @@ const useFirebase = () => {
         })
     }, [auth])
     const insertUser = (newUser) => {
-        fetch('http://localhost:5000/user', {
+        fetch('https://infinite-crag-35075.herokuapp.com/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -104,12 +104,12 @@ const useFirebase = () => {
 
     // load products from database 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://infinite-crag-35075.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://infinite-crag-35075.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAdmin(data.isAdmin);
