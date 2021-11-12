@@ -1,0 +1,26 @@
+.mini_admin_panel_container a{
+    text-decoration: none;
+    display: block;
+    margin-left:1.8rem ;
+    margin-bottom: 1rem;
+    color: black;
+}
+.dashboard_log_out_button{
+    margin-left:1.8rem ;
+    background-color: #e52165;
+    border:1px solid #e52165;
+    color: white;
+    padding: .3rem 1rem;
+    font-size: 1rem;
+    font-size: 1rem;
+    margin-top: 14rem;
+border-radius: 3px;
+}
+.log_out_icon{
+    font-size: .9rem;
+}
+.dashboard_log_out_button:hover{
+    background-color: white;
+    color: #e52165;
+    transition: all .3s ease-out;
+}

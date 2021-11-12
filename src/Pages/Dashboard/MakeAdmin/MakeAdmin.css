@@ -1,0 +1,18 @@
+.mini_make_add_container input{
+    width: 100%;
+    outline: none;
+    padding: .3rem 1rem;
+}
+
+.mini_make_add_container input:last-child{
+    background-color: #e52165;
+    color: white;
+    border: 1px solid #e52165;
+    border-radius: 3px;
+}
+
+.mini_make_add_container input:last-child:hover{
+    background-color: white;
+    color: #e52165;
+    transition: all .3s ease-in-out;
+}

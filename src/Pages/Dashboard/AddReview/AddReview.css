@@ -1,0 +1,28 @@
+.mini_review_container textarea{
+    width: 100%;
+    outline: none;
+    padding: .3rem 1rem;
+    margin-bottom: .7rem;
+}
+.mini_review_container input{
+    width: 100%;
+    outline: none;
+    padding: .3rem 1rem;
+    margin-bottom: 1rem;
+}
+.post_button{
+    background-color: #077b8a;
+    border: 1px solid #077b8a;
+    color: white;
+    padding: .3rem 2rem;
+    border-radius: 3px;
+}
+.post_button:hover{
+    background-color: white;
+    color: #077b8a;
+    transition: all .3s ease-out;
+}
+.reviewer_name{
+    font-weight: 600;
+    color:rgb(121, 64, 64);
+}

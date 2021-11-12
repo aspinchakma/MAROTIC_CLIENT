@@ -1,0 +1,88 @@
+import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
+import SingleMange from './SingleManage/SingleMange';
+import useAuth from './../../../utilities/hooks/useAuth';
+
+const ManageAll = () => {
+    const [orders, setOrders] = useState([]);
+
+    const { modifiedCount, setModifiedCount } = useAuth();
+
+
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/manageAll`)
+            .then(res => res.json())
+            .then(data => {
+                setOrders(data)
+            })
+    }, [orders, modifiedCount]);
+    const handleDelete = id => {
+        const confirmMessage = window.confirm("Are You Sure Delete this item ?");
+        if (confirmMessage) {
+            fetch(`http://localhost:5000/manageAll/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        const newOrders = orders.filter(order => order._id !== id);
+                        setOrders(newOrders);
+                        alert('Successfully Deleted ')
+                    }
+                })
+        }
+    }
+    const handleStatusUpdate = id => {
+        console.log(id)
+        fetch(`http://localhost:5000/manageAll/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    setModifiedCount(true)
+                }
+            })
+    }
+
+
+    return (
+        <div>
+            <h6>This manage all section</h6>
+            <Table striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Update Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {
+                        orders.map(order => <SingleMange
+                            key={order._id}
+                            handleDelete={handleDelete}
+                            order={order}
+                            handleStatusUpdate={handleStatusUpdate}
+
+                        />)
+                    }
+                </tbody>
+
+
+            </Table>
+        </div>
+    );
+};
+
+export default ManageAll;

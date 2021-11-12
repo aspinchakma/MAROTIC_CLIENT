@@ -12,6 +12,7 @@ const SingleProductDetails = () => {
     const { id } = useParams();
     const { user } = useAuth();
     const [product, setProduct] = useState({});
+    const [warning, setWarning] = useState(1);
 
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
@@ -23,6 +24,13 @@ const SingleProductDetails = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
+        console.log();
+        const quantityNumber = Number(data?.quantity);
+
+        if (Number(quantityNumber) <= 0) {
+            return setWarning(quantityNumber)
+        }
+        setWarning(quantityNumber)
         const { name, price } = product;
         const order = { name, price, ...data };
         order.status = 'pending';
@@ -36,6 +44,7 @@ const SingleProductDetails = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
+
                     alert('Successfully Added');
                     reset();
                 }
@@ -65,7 +74,7 @@ const SingleProductDetails = () => {
                             <p className="breaking_line"></p>
                             <p className="details_description">{product.description}</p>
                             <h5 className="details_product_price">${product.price}</h5>
-                            <Alert severity="warning">Note :Please set product quantity greater then 0.</Alert>
+                            {warning <= 0 && <Alert severity="warning">Note :Please set product quantity greater then 0.</Alert>}
                         </div>
                     </div>
                     <div className="col-lg-4 details_form_container py-5">
@@ -75,7 +84,7 @@ const SingleProductDetails = () => {
 
                             <input value={user.displayName} {...register("displayName")} />
                             <input type="email" value={user.email} {...register("email")} />
-                            <input type="number" {...register("quantity", { min: 1, max: 10 })} defaultValue="1" placeholder="Quantity" />
+                            <input type="number" {...register("quantity")} defaultValue="1" placeholder="Quantity" />
                             <input type="tel" {...register("phoneNumber", { required: true })} placeholder="Phone Number" required />
 
                             <input type="text" {...register("address", { required: true })} placeholder="Address" required />

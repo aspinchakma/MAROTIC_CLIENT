@@ -1,0 +1,24 @@
+.delete_button{
+    background-color: #e52165;
+    padding: .2rem .7rem;
+    color: white;
+    border: 1px solid #e52165;
+    border-radius: 3px;
+}
+.delete_button:hover{
+    background-color: white;
+    color: #e52165;
+    transition: all .3s ease-out;
+}
+.update_button{
+    background-color: #077b8a;
+    padding: .2rem .7rem;
+    color: white;
+    border: 1px solid #077b8a;
+    border-radius: 3px;
+}
+.update_button:hover{
+    background-color: white;
+    color: #077b8a;
+    transition: all .3s ease-out;
+}

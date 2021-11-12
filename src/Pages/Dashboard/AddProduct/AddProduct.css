@@ -1,0 +1,27 @@
+.main_form_container input{
+    width:100%;
+    padding:.3rem .9rem;
+    outline: none;
+    margin-bottom: .8rem;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+.main_form_container textarea{
+    width:100%;
+    padding:.3rem .9rem;
+    outline: none;
+    margin-bottom: .8rem;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+.main_form_container input:last-child{
+    background-color: #077b8a;
+    color: white;
+    border: 1px solid #077b8a;
+    padding:.4rem .9rem;
+}
+.main_form_container input:last-child:hover{
+    background-color: white;
+    color: #077b8a;
+    transition: all .3s ease-out;
+}

@@ -17,6 +17,19 @@
     margin-bottom: 1rem;
     outline:none;
 }
+.details_form_container input:last-child{
+    background-color: #e52165;
+    color: white;
+    font-size: 1.1rem;
+    border: 1px solid #e52165;
+    border-radius: 3px;
+    padding: .5rem;
+}
+.details_form_container input:last-child:hover{
+    background-color: white;
+    color: #e52165;
+    transition: all .3s ease-out;
+}
 .details_brand_name{
     color: blueviolet;
 }

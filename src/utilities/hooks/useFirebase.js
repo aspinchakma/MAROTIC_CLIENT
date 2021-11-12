@@ -7,6 +7,9 @@ const useFirebase = () => {
     initializeAuthentication();
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [modifiedCount, setModifiedCount] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false)
+
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const auth = getAuth();
@@ -104,7 +107,15 @@ const useFirebase = () => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, []);
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setIsAdmin(data.isAdmin);
+
+            })
+    }, [user.email])
 
     return {
         products,
@@ -115,6 +126,9 @@ const useFirebase = () => {
         error,
         setError,
         isLoading,
+        modifiedCount,
+        setModifiedCount,
+        isAdmin,
 
 
     }
