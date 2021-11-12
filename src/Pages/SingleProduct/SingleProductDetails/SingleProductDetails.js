@@ -24,7 +24,7 @@ const SingleProductDetails = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log();
+
         const quantityNumber = Number(data?.quantity);
 
         if (Number(quantityNumber) <= 0) {

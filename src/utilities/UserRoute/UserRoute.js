@@ -11,7 +11,7 @@ const UserRoute = ({ children, ...rest }) => {
             <Spinner animation="border" variant="info" />
         </div>
     }
-    console.log(isAdmin)
+
 
     return (
         <Route

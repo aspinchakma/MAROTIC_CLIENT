@@ -35,7 +35,7 @@ const ManageAll = () => {
         }
     }
     const handleStatusUpdate = id => {
-        console.log(id)
+
         fetch(`https://infinite-crag-35075.herokuapp.com/manageAll/${id}`, {
             method: 'PUT',
             headers: {

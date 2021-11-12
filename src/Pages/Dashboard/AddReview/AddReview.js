@@ -19,7 +19,6 @@ const AddReview = () => {
             description: description,
             rating: value,
         }
-        console.log(newReview)
         fetch('https://infinite-crag-35075.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
