@@ -1,0 +1,16 @@
+
+.our_partners_main_container{
+
+    background-color:#0d1137;
+    color: white;
+    padding: 3rem 0rem;
+}
+.our_partners_main_container h3{
+    font-weight: 600;
+    font-size: 2rem;
+}
+.our_partners_main_container img:hover{
+    transform: translateY(-15px);
+    cursor: pointer;
+    transition: all .3s ease-out;
+}

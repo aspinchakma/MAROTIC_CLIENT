@@ -37,7 +37,7 @@ const MyOrders = () => {
         <div>
             <h3 className="text-center">My Orders</h3>
             <p className="text-center">Total orders {myOrders.length}</p>
-            {myOrders.length ? <Table striped bordered hover size="sm">
+            {myOrders.length ? <Table responsive striped bordered hover>
                 <thead>
                     <tr>
                         <th>Product Name</th>

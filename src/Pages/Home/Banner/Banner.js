@@ -10,8 +10,7 @@ const Banner = () => {
                         <h1 className="banner_main_header">Built for men</h1>
                         <h2 className="banner_second_header">The house watches</h2>
                         <p className="banner_paragraph">
-                            Donec nec justo eget felis facilisis fermentum. Aliquam Aenean.<br />
-                            dignissim pellentesque felis.
+                            House of Watches is a dedicated online watch retailer with over 125 years of experience in the jewellery and watch industry. We strive to bring you quality watches from a wealth of well-known brands and elite customer service that goes above and beyond.
                         </p>
                         <NavLink to="/products">
                             <button className="banner_button">MORE PRODUCT</button>

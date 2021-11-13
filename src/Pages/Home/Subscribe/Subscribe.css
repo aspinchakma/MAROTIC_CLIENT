@@ -8,7 +8,7 @@
 }
 
 .subscribe_mini_container input{
-    width: 70%;
+    width: 60%;
     padding: .9rem 1rem;
     outline: none;
     border: none;
@@ -16,7 +16,7 @@
     border-bottom-left-radius: 5px;
 }
 .subscribe_mini_container button{
-    width: 30%;
+    width: 40%;
     padding: .9rem .7rem;
     margin-left:-.8rem ;
     border: none;
