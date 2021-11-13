@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
-import SingleMange from './SingleManage/SingleMange';
+import { Row } from 'react-bootstrap';
 import useAuth from './../../../utilities/hooks/useAuth';
 import { Alert } from '@mui/material';
+import ManageAllDetails from './../../ManageAllDetails/ManageAllDetails';
 
 const ManageAll = () => {
     const [orders, setOrders] = useState([]);
@@ -57,33 +57,20 @@ const ManageAll = () => {
             <h5 className="text-center">Manage All Orders</h5>
             <p className="text-center">You Have Total {orders.length} orders.</p>
             {orders.length ? <>
-                <Table responsive striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Status</th>
-                            <th>Update Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        {
-                            orders.map(order => <SingleMange
-                                key={order._id}
-                                handleDelete={handleDelete}
-                                order={order}
-                                handleStatusUpdate={handleStatusUpdate}
-
-                            />)
-                        }
-                    </tbody>
 
 
-                </Table>
+                <Row xs={1} md={3} className="g-4">
+                    {
+                        orders.map(order => <ManageAllDetails
+                            key={order._id}
+                            handleDelete={handleDelete}
+                            order={order}
+                            handleStatusUpdate={handleStatusUpdate}
+
+                        />)
+                    }
+                </Row>
+
             </>
                 :
                 <Alert className="mt-5" severity="info">You Have No Any Orders</Alert>

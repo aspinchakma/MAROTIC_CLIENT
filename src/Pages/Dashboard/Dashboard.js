@@ -28,7 +28,7 @@ import UserRoute from '../../utilities/UserRoute/UserRoute';
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 function Dashboard(props) {
     const { handleLogOut } = useAuth();

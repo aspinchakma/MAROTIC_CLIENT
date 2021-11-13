@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import useAuth from './../../../utilities/hooks/useAuth';
-import MyOrder from './MyOrder/MyOrder';
 import { Alert } from '@mui/material';
+import DetailsMyOrders from './DetailsMyOrders/DetailsMyOrders';
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
@@ -37,29 +37,15 @@ const MyOrders = () => {
         <div>
             <h3 className="text-center">My Orders</h3>
             <p className="text-center">Total orders {myOrders.length}</p>
-            {myOrders.length ? <Table responsive striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {
-                        myOrders.map(myOrder => <MyOrder
-                            key={myOrder._id}
-                            myOrder={myOrder}
-                            handleDelete={handleDelete}
-                        />)
-                    }
-                </tbody>
-
-
-            </Table>
+            {myOrders.length ? <Row xs={1} md={3} className="g-4">
+                {
+                    myOrders.map(myOrder => <DetailsMyOrders
+                        key={myOrder._id}
+                        myOrder={myOrder}
+                        handleDelete={handleDelete}
+                    />)
+                }
+            </Row>
                 :
                 <Alert className="mt-5" severity="info">Please Order Product</Alert>
             }

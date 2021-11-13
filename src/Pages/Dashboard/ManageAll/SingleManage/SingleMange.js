@@ -7,8 +7,7 @@ const SingleMange = ({ order, handleDelete, handleStatusUpdate }) => {
 
             <td>{email}</td>
             <td>{address}</td>
-            <td>{quantity}</td>
-            <td>{price * quantity}</td>
+
             <td>{status}</td>
             {
                 status === 'pending' ? <td><button className="update_button" onClick={() => handleStatusUpdate(_id)}>Update</button></td> :

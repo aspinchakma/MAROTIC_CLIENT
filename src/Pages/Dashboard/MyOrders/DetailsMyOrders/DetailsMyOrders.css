@@ -1,0 +1,35 @@
+.delete_button{
+    background-color: #e52165;
+    padding: .3rem .7rem;
+    color: white;
+    border: 1px solid #e52165;
+    border-radius: 3px;
+    font-size: 1.1rem;
+}
+.delete_button:hover{
+    background-color: white;
+    color: #e52165;
+    transition: all .3s ease-out;
+}
+.update_button{
+    background-color: #077b8a;
+    padding: .2rem .7rem;
+    color: white;
+    border: 1px solid #077b8a;
+    border-radius: 3px;
+}
+.update_button:hover{
+    background-color: white;
+    color: #077b8a;
+    transition: all .3s ease-out;
+}
+.single_orders_card_details{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    padding: 1rem .5rem;
+}
+.single_orders_card_details:hover{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
